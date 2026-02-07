@@ -6,8 +6,12 @@
       "id": "intro_impact",
       "title": "Marzanna Hunt",
       "speaker": "Choose an option:",
-      "body": "They are watching what you choose.",
+      "body": "Something is watching. It wants to see what you choose.",
       "theme": "planet_entry",
+      "fx": {
+        "ambient": ["low_rumble", "distant_whispers"],
+        "overlay": ["vignettePulse"]
+      },
       "choices": [
         {
           "id": "b33",
@@ -22,6 +26,10 @@
       "speaker": "SYSTEM",
       "body": "Asteroid shower incoming. Hull breach imminent. Navigation offline. In the dark, your partner finds your hand.",
       "theme": "crash_base",
+      "fx": {
+        "ambient": ["alarm", "metal_creak"],
+        "overlay": ["screenShake", "warningFlash", "sparks"]
+      },
       "choices": [
         {
           "id": "c1",
@@ -44,8 +52,12 @@
       "id": "path_bulkhead",
       "title": "Emergency Descent",
       "speaker": "NARRATOR",
-      "body": "You seal the cockpit, but power surges and control starts to fail. The planet rises fast beneath you. You and your partner lock your oxygen masks and brace as the world goes black.",
+      "body": "You seal the cockpit, but power surges through the frame and control starts to slip. The planet swells beneath you. You and your partner lock oxygen masks and brace as the world goes black.",
       "theme": "planet_entry",
+      "fx": {
+        "ambient": ["engine_whine", "wind_rise"],
+        "overlay": ["planetZoomHard", "cameraJolt", "debrisPass"]
+      },
       "choices": [
         {
           "id": "b1",
@@ -58,8 +70,12 @@
       "id": "path_divert_death",
       "title": "System Collapse",
       "speaker": "NARRATOR",
-      "body": "You divert power, but the grid overloads. The ship drops into uncontrolled freefall. The frame tears apart. You do not survive.",
+      "body": "You divert power, but the grid overloads instantly. The ship drops into uncontrolled freefall. The hull tears open in three places. Your story ends in fire and vacuum.",
       "theme": "void_death",
+      "fx": {
+        "ambient": ["hull_scream", "air_suction"],
+        "overlay": ["hardShake", "hullCrack", "fadeToBlack"]
+      },
       "ending": true
     },
     {
@@ -68,6 +84,10 @@
       "speaker": "PLAYER 1",
       "body": "\"Mayday. Ship compromised. We are going down. Holding course.\" You squeeze their hand. Static answers. Then silence.",
       "theme": "blackout_entry",
+      "fx": {
+        "ambient": ["radio_static", "low_heartbeat"],
+        "overlay": ["signalNoise", "glitchLines", "blackoutPulse"]
+      },
       "choices": [
         {
           "id": "t1",
@@ -80,8 +100,12 @@
       "id": "wake_alone",
       "title": "Wreckage",
       "speaker": "NARRATOR",
-      "body": "Cold metal. Bitter wind. A single oxygen canister blinks in the dark. The other seat is empty, harness torn open.",
+      "body": "Cold metal under your palms. Bitter wind cuts through the canyon. One oxygen canister blinks in the dark. The other seat is empty, harness torn open.",
       "theme": "wakeup",
+      "fx": {
+        "ambient": ["wind_howl", "distant_metal_ping"],
+        "overlay": ["snowDust", "breathFog", "flickerLight"]
+      },
       "choices": [
         {
           "id": "c4",
@@ -99,8 +123,12 @@
       "id": "end_good",
       "title": "Signal Found",
       "speaker": "NARRATOR",
-      "body": "The beacon pulses through the storm like a heartbeat. They are alive. They are waiting.",
+      "body": "The beacon pulses through the storm like a heartbeat. Not random. Deliberate. They are alive, and close enough to be found.",
       "theme": "endingSafe",
+      "fx": {
+        "ambient": ["beacon_ping", "wind_soft"],
+        "overlay": ["beaconPulse", "lightSweep"]
+      },
       "choices": [
         {
           "id": "next",
@@ -113,15 +141,24 @@
       "id": "end_bad",
       "title": "Containment Failure",
       "speaker": "NARRATOR",
-      "body": "You wait too long in the wreckage. Oxygen runs out. Your vision narrows, then disappears. The silence is total.",
+      "body": "You wait too long in the wreckage. Oxygen runs thin, then gone. Your vision narrows to a tunnel, then to a point, then to nothing. Rescue comes to an empty suit.",
       "theme": "endingRisk",
+      "fx": {
+        "ambient": ["heartbeat_slow", "muffled_wind"],
+        "overlay": ["frostEdge", "heavyVignette", "fadeToBlack"]
+      },
       "ending": true
     },
     {
       "id": "voyage",
       "title": "Voyage",
       "speaker": "NARRATOR",
-      "body": "A shadow peels itself from the canyon wall. It is tall, unnatural, and watching you with the patience of something ancient.",
+      "body": "A shadow peels itself off the canyon wall. It is too tall, too still, and too patient. It watches you like you are the final piece of a puzzle it already solved.",
+      "theme": "canyon_dread",
+      "fx": {
+        "ambient": ["sub_bass", "stone_shift"],
+        "overlay": ["parallaxShadow", "dustSpiral"]
+      },
       "choices": [
         {
           "id": "c15",
@@ -139,7 +176,12 @@
       "id": "toBeStopped",
       "title": "Voyage",
       "speaker": "NARRATOR",
-      "body": "Your legs lock. Your body will not obey you, as if something, or someone, is holding you in place.",
+      "body": "Your legs lock. Your body refuses every command, as if invisible hands are pinning you to the stone.",
+      "theme": "canyon_dread",
+      "fx": {
+        "ambient": ["bone_hum"],
+        "overlay": ["timeSlow", "edgeBlur"]
+      },
       "choices": [
         {
           "id": "next",
@@ -153,6 +195,11 @@
       "title": "Voyage",
       "speaker": "MONSTER",
       "body": "Humans. Fragile and loud. Prove your soul has weight.",
+      "theme": "canyon_dread",
+      "fx": {
+        "ambient": ["voice_reverb"],
+        "overlay": ["subtitleGlitch", "eyeGlow"]
+      },
       "choices": [
         {
           "id": "next",
@@ -166,6 +213,11 @@
       "title": "Morality",
       "speaker": "MONSTER",
       "body": "You did not run. Interesting. The other one did. Answer carefully. Your worth hangs in the balance.",
+      "theme": "moral_trial",
+      "fx": {
+        "ambient": ["voice_reverb", "low_drone"],
+        "overlay": ["eyeGlow", "slowZoomIn"]
+      },
       "choices": [
         {
           "id": "next",
@@ -178,8 +230,12 @@
       "id": "alienQA",
       "title": "Morality",
       "speaker": "MONSTER",
-      "body": "Someone you love deeply believes something you know is dangerous and wrong. To truly pull them out of it, would you:",
+      "body": "Someone you love believes something dangerous and false. To pull them out, would you hurt them now to save them later, or let them stay happy and wrong?",
       "theme": "First question",
+      "fx": {
+        "ambient": ["tension_drone"],
+        "overlay": ["questionPulse"]
+      },
       "choices": [
         {
           "id": "c6",
@@ -197,7 +253,12 @@
       "id": "interes",
       "title": "Morality",
       "speaker": "MONSTER",
-      "body": "An interesting choice.",
+      "body": "Interesting. Mercy and cowardice can look the same in the dark.",
+      "theme": "moral_trial",
+      "fx": {
+        "ambient": ["tension_drone"],
+        "overlay": ["blinkShadow"]
+      },
       "choices": [
         {
           "id": "next",
@@ -210,8 +271,12 @@
       "id": "second_q",
       "title": "Morality",
       "speaker": "MONSTER",
-      "body": "Your partner is closer to the beacon. If you sabotage them, your claim is secure. They would never know it was you. Is your loyalty stronger than your need to win?",
+      "body": "Your partner is closer to the beacon. If you sabotage them, your claim is secure, and they would never know. Is loyalty stronger than your need to win?",
       "theme": "Second question",
+      "fx": {
+        "ambient": ["heartbeat_med"],
+        "overlay": ["choiceGlow"]
+      },
       "choices": [
         {
           "id": "c8",
@@ -229,7 +294,12 @@
       "id": "choice",
       "title": "Morality",
       "speaker": "MONSTER",
-      "body": "Interesting decision.",
+      "body": "Noted. Ambition is honest, at least.",
+      "theme": "moral_trial",
+      "fx": {
+        "ambient": ["heartbeat_med"],
+        "overlay": ["blinkShadow"]
+      },
       "choices": [
         {
           "id": "next",
@@ -242,8 +312,12 @@
       "id": "third_q",
       "title": "Morality",
       "speaker": "MONSTER",
-      "body": "I watched your partner enter my domain. They spoke of you. They said you would hesitate when it mattered most, that your conscience makes you weak. Does that change your desire to find them?",
+      "body": "Your partner entered my domain before you. They said you would hesitate at the final moment, that your conscience makes you weak. Does that change your desire to find them?",
       "theme": "Third question",
+      "fx": {
+        "ambient": ["low_drone", "whisper_tail"],
+        "overlay": ["glitchBreath"]
+      },
       "choices": [
         {
           "id": "c10",
@@ -261,7 +335,12 @@
       "id": "pec",
       "title": "Morality",
       "speaker": "MONSTER",
-      "body": "How peculiar.",
+      "body": "How peculiar. You still choose them.",
+      "theme": "moral_trial",
+      "fx": {
+        "ambient": ["low_drone"],
+        "overlay": ["softPulse"]
+      },
       "choices": [
         {
           "id": "next",
@@ -276,6 +355,10 @@
       "speaker": "MONSTER",
       "body": "I can let you pass. But your partner will die. Will you accept that price?",
       "theme": "Fourth question",
+      "fx": {
+        "ambient": ["heartbeat_fast", "sub_drop"],
+        "overlay": ["hardVignette", "decisionFlash"]
+      },
       "choices": [
         {
           "id": "c12",
@@ -291,10 +374,14 @@
     },
     {
       "id": "nice",
-      "title": "Ending",
+      "title": "Judgment",
       "speaker": "MONSTER",
-      "body": "A choice of the heart, not the mind. You may pass. But what waits ahead will break you. Go forward and face a terrible truth, or turn back and accept the death you refused.",
+      "body": "Heart over survival. Rare. You may pass. But understand this: ahead is not victory, only truth. Walk forward and carry it, or turn back and carry your guilt.",
       "theme": "nice-ending",
+      "fx": {
+        "ambient": ["choir_low", "wind_soft"],
+        "overlay": ["lightRay", "slowFadeWarm"]
+      },
       "choices": [
         {
           "id": "next",
@@ -305,18 +392,26 @@
     },
     {
       "id": "not_nice",
-      "title": "Morality",
+      "title": "Sentence",
       "speaker": "MONSTER",
-      "body": "You traded one soul for another. Unworthy. Your punishment is death.",
+      "body": "You traded one soul for your own comfort. Unworthy. Judgment is immediate.",
       "theme": "bad_ending",
+      "fx": {
+        "ambient": ["impact_bass"],
+        "overlay": ["hardCutRed", "fadeToBlack"]
+      },
       "ending": true
     },
     {
       "id": "finalEnding",
-      "title": "Ending",
+      "title": "The Ruins",
       "speaker": "NARRATOR",
-      "body": "You find ancient ruins. On the jagged stone lies an oxygen mask. Blood darkens the rock around it.",
+      "body": "Ancient ruins rise from the canyon floor. On jagged stone lies an oxygen mask. Fresh blood darkens the rock around it, still wet in the cold.",
       "theme": "final_ending",
+      "fx": {
+        "ambient": ["wind_howl", "distant_ping"],
+        "overlay": ["bloodDrip", "dustSweep", "flashlightSweep"]
+      },
       "choices": [
         {
           "id": "next",
@@ -327,10 +422,14 @@
     },
     {
       "id": "lastpage",
-      "title": "THE END",
-      "speaker": "The Team",
-      "body": "Thank you for playing our game.",
+      "title": "Final Choice",
+      "speaker": "NARRATOR",
+      "body": "No bodies. No answers. Just the mask, the blood, and your next decision. Some endings do not close. They follow you home.",
       "theme": "finalEnding",
+      "fx": {
+        "ambient": ["wind_fade", "single_heartbeat"],
+        "overlay": ["longFade", "grainRise"]
+      },
       "ending": true
     }
   ]
