@@ -4,6 +4,7 @@ import storyDataRaw from "./data/story.json";
 import { getScene } from "./engine/storyEngine";
 import type { StoryData } from "./engine/types";
 import CinematicBackground from "./components/CinematicBackground";
+import BackgroundAudio from './components/BackgroundAudio'; // ADD THIS IMPORT
 
 const storyData: StoryData = storyDataRaw as unknown as StoryData;
 
@@ -98,7 +99,7 @@ function App() {
     );
   }
 
-  const sceneTheme = (scene as any).theme ?? "crash_base";
+const sceneTheme = scene.theme ?? "crash_base"; 
   const camera = getCamera(scene.id);
 
   const handleChoice = (nextId: string) => {
@@ -112,38 +113,46 @@ function App() {
   };
 
   return (
-    <div className={`app app-shell theme-${sceneTheme}`}>
-      <CinematicBackground theme={sceneTheme} camera={camera} />
-      <CharacterLayer sceneId={scene.id} />
+    <>
+      <BackgroundAudio 
+        audioFile="/krasnoshchok-horror-scary-dark-music-413504.mp3" 
+        volume={0.3} 
+        loop={true}
+      />
+      
+      <div className={`app app-shell theme-${sceneTheme}`}>
+        <CinematicBackground theme={sceneTheme} camera={camera} />
+        <CharacterLayer sceneId={scene.id} />
 
-      <main className="scene-panel">
-        <h1 className="scene-title">{scene.title}</h1>
-        {scene.speaker && <h2 className="scene-speaker">{scene.speaker}</h2>}
-        <p className="story-body">{scene.body}</p>
+        <main className="scene-panel">
+          <h1 className="scene-title">{scene.title}</h1>
+          {scene.speaker && <h2 className="scene-speaker">{scene.speaker}</h2>}
+          <p className="story-body">{scene.body}</p>
 
-        {!scene.ending && scene.choices?.length ? (
-          <div className="choices">
-            {scene.choices.map((choice: any) => (
-              <button
-                key={choice.id}
-                className="choice-btn"
-                onClick={() => handleChoice(choice.nextId)}
-              >
-                {choice.text}
+          {!scene.ending && scene.choices?.length ? (
+            <div className="choices">
+              {scene.choices.map((choice) => (
+                <button
+                  key={choice.id}
+                  className="choice-btn"
+                  onClick={() => handleChoice(choice.nextId)}
+                >
+                  {choice.text}
+                </button>
+              ))}
+            </div>
+          ) : (
+            <div className="choices">
+              <button className="choice-btn" onClick={restart}>
+                Restart Story
               </button>
-            ))}
-          </div>
-        ) : (
-          <div className="choices">
-            <button className="choice-btn" onClick={restart}>
-              Restart Story
-            </button>
-          </div>
-        )}
+            </div>
+          )}
 
-        <div className="path-text">Path: {path.join(" → ")}</div>
-      </main>
-    </div>
+          <div className="path-text">Path: {path.join(" → ")}</div>
+        </main>
+      </div>
+    </>
   );
 }
 
