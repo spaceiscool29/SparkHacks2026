@@ -1,24 +1,47 @@
-import type { StoryData, StoryNode } from "./types";
+import type { StoryData, Scene } from "./types";
 
-export function getNode(data: StoryData, id: string): StoryNode | undefined {
-  return data.nodes.find((n) => n.id === id);
+/**
+ * Returns one scene by id.
+ */
+export function getScene(data: StoryData, id: string): Scene | undefined {
+  return data.scenes.find((scene) => scene.id === id);
 }
 
-export function applyEffects(
-  state: Record<string, number | boolean>,
-  effects?: Record<string, number | boolean>
-) {
-  if (!effects) return state;
-  const next = { ...state };
+/**
+ * Safe helper to move to next scene from a choice.
+ * (Optional now, useful later)
+ */
+export function getNextScene(
+  data: StoryData,
+  currentSceneId: string,
+  choiceId: string
+): Scene | undefined {
+  const current = getScene(data, currentSceneId);
+  if (!current || !current.choices) return undefined;
 
-  for (const [key, value] of Object.entries(effects)) {
-    if (typeof value === "number") {
-      const current = typeof next[key] === "number" ? (next[key] as number) : 0;
-      next[key] = current + value;
-    } else {
-      next[key] = value;
+  const choice = current.choices.find((c) => c.id === choiceId);
+  if (!choice) return undefined;
+
+  return getScene(data, choice.nextId);
+}
+
+/**
+ * Optional validator for debugging broken links in story.json.
+ * Returns a list of missing scene IDs referenced by choices.
+ */
+export function validateStoryLinks(data: StoryData): string[] {
+  const sceneIds = new Set(data.scenes.map((s) => s.id));
+  const missing: string[] = [];
+
+  for (const scene of data.scenes) {
+    for (const choice of scene.choices ?? []) {
+      if (!sceneIds.has(choice.nextId)) {
+        missing.push(
+          `Scene "${scene.id}" choice "${choice.id}" points to missing nextId "${choice.nextId}"`
+        );
+      }
     }
   }
 
-  return next;
+  return missing;
 }

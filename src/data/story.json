@@ -1,43 +1,100 @@
 {
-  "startId": "intro",
-  "nodes": [
+  "title": "Marzanna Hunt",
+  "startSceneId": "intro_impact",
+  "scenes": [
     {
-      "id": "intro",
-      "title": "The Signal",
-      "text": "A missing researcher sends you one final encrypted message. It will self-delete in 10 minutes.",
+      "id": "intro_impact",
+      "title": "Scene 1: Impact",
+      "speaker": "SYSTEM",
+      "body": "Asteroid shower incoming. Hull integrity collapsing. Navigation offline.",
+      "theme": "crash_base",
       "choices": [
-        { "text": "Open it now", "nextId": "lab", "effects": { "courage": 1 } },
-        { "text": "Call your teammate first", "nextId": "call", "effects": { "trust": 1 } }
+        {
+          "id": "c1",
+          "text": "Seal cockpit bulkhead and attempt emergency landing",
+          "nextId": "path_bulkhead"
+        },
+        {
+          "id": "c2",
+          "text": "Divert power to shields",
+          "nextId": "path_divert_death"
+        },
+        {
+          "id": "c3",
+          "text": "Transmit final message and hold course",
+          "nextId": "path_transmit_crash"
+        }
       ]
     },
     {
-      "id": "lab",
-      "title": "Abandoned Lab",
-      "text": "You enter a dark lab. A terminal asks for an override.",
+      "id": "path_bulkhead",
+      "title": "Emergency Descent",
+      "speaker": "NARRATOR",
+      "body": "You seal the cockpit, but power reroutes into control systems. You lose fine control and crash-land on the planet. You and your partner lock oxygen masks and brace for impact.",
+      "theme": "planet_entry",
       "choices": [
-        { "text": "Force access", "nextId": "ending_risk", "effects": { "risk": 2 } },
-        { "text": "Search protocol logs", "nextId": "ending_safe", "effects": { "trust": 1 } }
+        {
+          "id": "b1",
+          "text": "Continue",
+          "nextId": "wake_alone"
+        }
       ]
     },
     {
-      "id": "call",
-      "title": "Late Night Call",
-      "text": "Your teammate finds an ethical fail-safe hidden in old notes.",
-      "choices": [
-        { "text": "Proceed carefully", "nextId": "ending_safe", "effects": { "trust": 1 } },
-        { "text": "Rush anyway", "nextId": "ending_risk", "effects": { "risk": 1 } }
-      ]
-    },
-    {
-      "id": "ending_safe",
-      "title": "Ending: Responsible Breakthrough",
-      "text": "You recover the discovery and deploy safeguards. Lives are protected.",
+      "id": "path_divert_death",
+      "title": "System Collapse",
+      "speaker": "NARRATOR",
+      "body": "You divert power, but the system shorts. The ship enters uncontrolled freefall. Structural failure becomes total. You do not survive.",
+      "theme": "void_death",
       "ending": true
     },
     {
-      "id": "ending_risk",
+      "id": "path_transmit_crash",
+      "title": "Last Broadcast",
+      "speaker": "PLAYER 1",
+      "body": "This is Ship... we have lost full control. We are crash-landing on the planet. This may be our last message. We hold course as systems fail. The screen goes dark.",
+      "theme": "blackout_entry",
+      "choices": [
+        {
+          "id": "t1",
+          "text": "Continue",
+          "nextId": "wake_alone"
+        }
+      ]
+    },
+    {
+      "id": "wake_alone",
+      "title": "Scene 2: Wreckage",
+      "speaker": "SYSTEM",
+      "body": "You wake in twisted metal and silence. Your partner is missing. Wind scrapes across the wreck. One oxygen canister remains.",
+      "theme": "wakeup",
+      "choices": [
+        {
+          "id": "c4",
+          "text": "Follow the distress beacon into the canyon",
+          "nextId": "end_good"
+        },
+        {
+          "id": "c5",
+          "text": "Stay near the ship and conserve oxygen",
+          "nextId": "end_bad"
+        }
+      ]
+    },
+    {
+      "id": "end_good",
+      "title": "Ending: Signal Found",
+      "speaker": "SYSTEM",
+      "body": "You find signs your partner survived. A faint beacon pulses in the storm. Hope returns.",
+      "theme": "endingSafe",
+      "ending": true
+    },
+    {
+      "id": "end_bad",
       "title": "Ending: Containment Failure",
-      "text": "You move too fast and miss warnings. The system fails publicly.",
+      "speaker": "SYSTEM",
+      "body": "You wait too long in the wreckage. Oxygen runs out. The planet goes dark.",
+      "theme": "endingRisk",
       "ending": true
     }
   ]
