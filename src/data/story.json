@@ -16,6 +16,24 @@
         {
           "id": "b33",
           "text": "START THE GAME",
+          "nextId": "des"
+        }
+      ]
+    },
+    {
+      "id": "des",
+      "title": "Marzanna Hunt",
+      "speaker": "SYSTEM",
+      "body": "You are hunters. The *Gilded Cage* takes jobs others won't. A new commission flashes: a corporate team vanishes in the Marzanna Belt. Retrieve their data core. No survivors expected. The payout could buy your freedom. It's the perfect job.",
+      "theme": "planet_entry",
+      "fx": {
+        "ambient": ["low_rumble", "distant_whispers"],
+        "overlay": ["vignettePulse"]
+      },
+      "choices": [
+        {
+          "id": "b36",
+          "text": "Continue",
           "nextId": "theImpact"
         }
       ]
