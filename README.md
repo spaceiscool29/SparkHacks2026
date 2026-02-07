@@ -1,4 +1,4 @@
-# THE NAME OF THE PROJECT
+# MARZANNA HUNT
 A fast-paced survival game built for the browser.
 
 # Describtion
