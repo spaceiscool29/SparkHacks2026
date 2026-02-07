@@ -1,3 +1,39 @@
+# THE NAME OF THE PROJECT
+A fast-paced survival game built for the browser.
+
+# Describtion
+The game takes place aboard a collapsing spaceship, where the main character awakens alone and follows a distress beacon emitted from their partner’s mask. As they move through the failing ship, the player encounters alien and monstrous entities that force difficult moral choices—each decision affecting whether the protagonist survives.
+
+# Directions (LocalHost setup) 
+  # Requirements:
+    - Node.js 
+    - npm
+  # Steps:
+    1. Clone the repository
+    2. run 'cd SparkHacks2026'
+    3. run 'npm install'
+    4. run 'npm run dev'
+    5. open local host link in your browser
+
+# Gameplay
+Players progress by reading the on-screen text and making choices when prompted 
+(by clicking on them). Each decision influences the outcome of encounters and 
+the direction of the story.
+
+# Build with 
+  - TypeScript + React + Vite
+  - CSS, HTML, JavaScript
+  - Node.js
+  - JSON (for dialogue and story data)
+
+## TEAM
+  Srinjana - UI/UX design, Backend & server setup
+  Raga - Game logic/script, audio
+  Mika - Game logic/script
+
+
+# Additional info for developers:
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
