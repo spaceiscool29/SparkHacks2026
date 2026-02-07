@@ -65,7 +65,7 @@
     {
       "id": "wake_alone",
       "title": "Scene 2: Wreckage",
-      "speaker": "SYSTEM",
+      "speaker": "NARRATOR",
       "body": "You wake in twisted metal and silence. Your partner is missing. Wind scrapes across the wreck. One oxygen canister remains.",
       "theme": "wakeup",
       "choices": [
@@ -84,24 +84,81 @@
     {
       "id": "end_good",
       "title": "Ending: Signal Found",
-      "speaker": "SYSTEM",
+      "speaker": "NARRATOR",
       "body": "You find signs your partner survived. A faint beacon pulses in the storm. Hope returns.",
       "theme": "endingSafe",
       "choices": [
       {
         "id": "next",
         "text": "Continue",
-        "nextId": "alienQA"
+        "nextId": "voyage"
       }
     ]
     },
     {
       "id": "end_bad",
       "title": "Ending: Containment Failure",
-      "speaker": "SYSTEM",
+      "speaker": "NARRATOR",
       "body": "You wait too long in the wreckage. Oxygen runs out. The planet goes dark.",
       "theme": "endingRisk",
       "ending": true
+    },
+    {
+      "id": "voyage",
+      "title": "Scene 2: Voyage",
+      "speaker": "NARRATOR",
+      "body": "You walk towards the beacon, each step crunching against the jagged, alien terrain.The beacon pulses steadily ahead, a small comfort in the vast, unfamiliar world. A towering alien figure steps from the shadows, its eyes fixed on you.",
+      "choices": [
+        {
+          "id": "c15",
+          "text": "You try to run away.",
+          "nextId": "toBeStopped"
+        },
+        {
+          "id": "c16",
+          "text": "You stay strong and awaits for the monster to speak.",
+          "nextId": "stayStrong"
+        }
+      ]
+    },
+    {
+      "id": "toBeStopped",
+      "title": "Scene 2: Voyage",
+      "speaker": "NARRATOR",
+      "body": "You feel that your body is not moving, as if something *or someone* is holding you in place.",
+      "choices": [
+      {
+        "id": "next",
+        "text": "Continue",
+        "nextId": "runAway"
+      }
+      ]
+    },
+    {
+      "id": "runAway",
+      "title": "Scene 2: Voyage",
+      "speaker": "Alien",
+      "body": "You, humans, are worthless creatures, I will question you to determine if you deserve to live.",
+      "choices": [
+      {
+        "id": "next",
+        "text": "Continue",
+        "nextId": "alienQA"
+      }
+      ]
+    },
+    {
+      "id": "stayStrong",
+      "title": "Scene 3: Alien",
+      "speaker": "Alien",
+      "body": "I am surpried that you are not trying to escape *based on previous experience*. You, humans, are worthless creatures, I will question you to determine if you deserve to live.",
+      "choices": [
+      {
+        "id": "next",
+        "text": "Continue",
+        "nextId": "alienQA"
+      }
+      ]
     },
     {
       "id": "alienQA",
@@ -118,8 +175,21 @@
         {
           "id": "c7",
           "text": "You allow them to remain happily wrong.",
-          "nextId": "second_q"
+          "nextId": "interes"
         }
+      ]
+    },
+    {
+      "id": "interes",
+      "title": "Scene 3: Alien",
+      "speaker": "Alien",
+      "body": "An intriguing choice.",
+      "choices": [
+      {
+        "id": "next",
+        "text": "Continue",
+        "nextId": "second_q"
+      }
       ]
     },
     {
@@ -137,8 +207,21 @@
         {
           "id": "c9",
           "text": "No, it is not.",
-          "nextId": "third_q"
+          "nextId": "choice"
         }
+      ]
+    },
+    {
+      "id": "choice",
+      "title": "Scene 3: Alien",
+      "speaker": "Alien",
+      "body": "Interesting decision",
+      "choices": [
+      {
+        "id": "next",
+        "text": "Continue",
+        "nextId": "third_q"
+      }
       ]
     },
     {
@@ -156,8 +239,21 @@
         {
           "id": "c11",
           "text": "No, it does not.",
-          "nextId": "fourth_q"
+          "nextId": "pec"
         }
+      ]
+    },
+    {
+      "id": "pec",
+      "title": "Scene 3: Alien",
+      "speaker": "Alien",
+      "body": "How peculiar.",
+      "choices": [
+      {
+        "id": "next",
+        "text": "Continue",
+        "nextId": "fourth_q"
+      }
       ]
     },
     {
@@ -184,7 +280,14 @@
       "title": "Ending",
       "speaker": "Alien",
       "body": "...a hard choice..and yet one that you made for the sake of your partner.. For a chance forr them to be happy. You have chosen the right answer it was a hard choice..and yet it was also the one made from your heart and not from ill intentions. This proves that you are of pure heart. You may go forth. I do warn you what you find ahead may not be what you wish to see. But if you step across this boundary you may not return. If you go back death is also certain.",
-      "theme": "nice-ending"
+      "theme": "nice-ending",
+      "choices": [
+      {
+        "id": "next",
+        "text": "Go forward",
+        "nextId": "finalEnding"
+      }
+      ]
     },
     {
       "id": "not_nice",
@@ -192,6 +295,28 @@
       "speaker": "Alien",
       "body": "You have chosen wrong — die.",
       "theme": "bad_ending",
+      "ending": true
+    },
+    {
+      "id": "finalEnding",
+      "title": "Ending",
+      "speaker": "NARRATOR",
+      "body": "You walk forward and there are ruins all around and it smells of metal..you start to see a trail of blood and freeze as if it could only be of one person.A red oxygen mask on the ground..like the one your partner had… and there is blood sprayed across the mask as it is shattered against the cold barren rock.",
+      "theme": "final_ending",
+      "choices": [
+      {
+        "id": "next",
+        "text": "Continue",
+        "nextId": "lastpage"
+      }
+      ]
+    },
+    {
+      "id": "lastpage",
+      "title": "THE END",
+      "speaker": "The team",
+      "body": "Thank you for playing our game. Srinjana, Raga, Mika.",
+      "theme": "finaLending",
       "ending": true
     }
   ]
