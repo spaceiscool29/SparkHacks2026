@@ -148,8 +148,6 @@ function App() {
               </button>
             </div>
           )}
-
-          <div className="path-text">Path: {path.join(" → ")}</div>
         </main>
       </div>
     </>
