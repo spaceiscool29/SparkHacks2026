@@ -27,18 +27,26 @@ the direction of the story.
   - JSON (for dialogue and story data)
 
 # Code Structure
-/public                # audio assets
+/public                - audio assets
+
 /src
-  - components         # UI and game components
-  - data               # story line
-  - engine             # state handling
-index.html             # base HTML file 
-package-lock.json      # internal dependency info
-package.json           # project metadata, dependencies, and scripts
-tsconfig.app.json      # TypeScript configuration
-tsconfig.json          # App-specific TypeScript config
-tsconfig.node.json     # Node-specific TypeScript config
-vite.config.ts         # Vite build configuration
+  - components         - UI and game components
+  - data               - story line
+  - engine             - state handling
+
+index.html             - base HTML file 
+
+package-lock.json      - internal dependency info
+
+package.json           - project metadata, dependencies, and scripts
+
+tsconfig.app.json      - TypeScript configuration
+
+tsconfig.json          - App-specific TypeScript config
+
+tsconfig.node.json     - Node-specific TypeScript config
+
+vite.config.ts         - Vite build configuration
 
 ## TEAM
   Srinjana - UI/UX design, Backend & server setup
