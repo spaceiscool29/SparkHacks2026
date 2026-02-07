@@ -493,3 +493,49 @@ body {
   .boy { left: 16px; }
   .girl { right: 16px; }
 }
+
+
+/* Ensure character area can show extra shapes */
+.character-layer,
+.char {
+  overflow: visible !important;
+}
+
+/* Girl hair */
+.char.girl .hair.girl-hair {
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 62px;
+  border-radius: 30px 30px 18px 18px;
+  background: linear-gradient(180deg, #3b2418 0%, #6a3f2a 65%, #84533a 100%);
+  z-index: 2; /* behind head */
+  pointer-events: none;
+}
+
+/* Side hair strands */
+.char.girl .hair.girl-hair::before,
+.char.girl .hair.girl-hair::after {
+  content: "";
+  position: absolute;
+  top: 24px;
+  width: 10px;
+  height: 28px;
+  background: #6a3f2a;
+  border-radius: 8px;
+}
+
+.char.girl .hair.girl-hair::before {
+  left: -4px;
+  transform: rotate(10deg);
+}
+.char.girl .hair.girl-hair::after {
+  right: -4px;
+  transform: rotate(-10deg);
+}
+
+/* Keep existing layers clear */
+.char .char-head { z-index: 3; }
+.char .helmet { z-index: 4; }

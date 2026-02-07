@@ -58,3 +58,25 @@ h5,
 h6 {
   overflow-wrap: break-word;
 }
+
+.tw-caret {
+  display: inline-block;
+  margin-left: 2px;
+  animation: twBlink 0.9s steps(1) infinite;
+}
+
+@keyframes twBlink {
+  50% { opacity: 0; }
+}
+
+.char.girl .hair.girl-hair {
+  position: absolute;
+  width: 40px;
+  height: 44px;
+  left: 50%;
+  top: 8px;
+  transform: translateX(-50%);
+  border-radius: 22px 22px 14px 14px;
+  background: linear-gradient(180deg, #2b1b14 0%, #5a3828 100%);
+  z-index: 0; /* behind helmet/head */
+}

@@ -1,10 +1,11 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import "./App.css";
 import storyDataRaw from "./data/story.json";
 import { getScene } from "./engine/storyEngine";
 import type { StoryData } from "./engine/types";
 import CinematicBackground from "./components/CinematicBackground";
-import BackgroundAudio from './components/BackgroundAudio'; 
+import BackgroundAudio from "./components/BackgroundAudio";
+import TypewriterText from "./components/TypewriterText";
 
 const storyData: StoryData = storyDataRaw as unknown as StoryData;
 
@@ -64,6 +65,7 @@ function CharacterLayer({ sceneId }: { sceneId?: string }) {
 
       {showGirl && (
         <div className={`char girl ${girlExtra}`}>
+          <div className="hair girl-hair" />
           <div className="helmet" />
           <div className="char-head">
             <span className="eye left" />
@@ -87,10 +89,6 @@ function App() {
 
   const scene = useMemo(() => getScene(storyData, currentId), [currentId]);
 
-  useEffect(() => {
-    if (!scene) return;
-  }, [scene]);
-
   if (!scene) {
     return (
       <div className="app app-shell theme-wakeup">
@@ -99,7 +97,7 @@ function App() {
     );
   }
 
-const sceneTheme = scene.theme ?? "crash_base"; 
+  const sceneTheme = scene.theme ?? "crash_base";
   const camera = getCamera(scene.id);
 
   const handleChoice = (nextId: string) => {
@@ -114,12 +112,12 @@ const sceneTheme = scene.theme ?? "crash_base";
 
   return (
     <>
-      <BackgroundAudio 
-        audioFile="/krasnoshchok-horror-scary-dark-music-413504.mp3" 
-        volume={0.3} 
+      <BackgroundAudio
+        audioFile="/krasnoshchok-horror-scary-dark-music-413504.mp3"
+        volume={0.3}
         loop={true}
       />
-      
+
       <div className={`app app-shell theme-${sceneTheme}`}>
         <CinematicBackground theme={sceneTheme} camera={camera} />
         <CharacterLayer sceneId={scene.id} />
@@ -127,7 +125,9 @@ const sceneTheme = scene.theme ?? "crash_base";
         <main className="scene-panel">
           <h1 className="scene-title">{scene.title}</h1>
           {scene.speaker && <h2 className="scene-speaker">{scene.speaker}</h2>}
-          <p className="story-body">{scene.body}</p>
+
+          {/* typewriter text replaces plain <p>{scene.body}</p> */}
+          <TypewriterText text={scene.body ?? ""} speed={20} className="story-body" />
 
           {!scene.ending && scene.choices?.length ? (
             <div className="choices">
