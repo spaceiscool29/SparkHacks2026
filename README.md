@@ -49,9 +49,11 @@ tsconfig.node.json     - Node-specific TypeScript config
 vite.config.ts         - Vite build configuration
 
 ## TEAM
-  Srinjana - UI/UX design, Backend & server setup
-  Raga - Game logic/script, audio
-  Mika - Game logic/script
+  Srinjana Chatterjee(@spaceiscool29) - UI/UX design, Backend & server setup
+  
+  Ragasri Yegatella(@RagaY05) - Game logic/script, audio
+  
+  Mika Kharoshka(@mkkhar & @kkhargit) - Game logic/script
 
 
 # Additional info for developers:
