@@ -114,55 +114,70 @@ body {
 .planet::before {
   content: "";
   position: absolute;
-  width: 320px;
-  height: 320px;
+  width: 380px;          /* bigger */
+  height: 380px;
   border-radius: 50%;
-  right: 11%;
-  top: 16%;
+  right: 6%;             /* more to right edge */
+  top: 4%;               /* higher */
   background:
-    radial-gradient(circle at 35% 30%, rgba(255, 170, 128, 0.55), rgba(173, 106, 255, 0.52) 58%, rgba(80, 34, 122, 0.4) 100%);
+    radial-gradient(circle at 35% 30%,
+      rgba(255, 190, 150, 0.62),
+      rgba(180, 110, 255, 0.60) 58%,
+      rgba(90, 44, 135, 0.45) 100%);
   box-shadow:
-    0 0 44px rgba(178, 110, 255, 0.42),
-    0 0 140px rgba(152, 99, 235, 0.22);
-  opacity: 0.88;
+    0 0 56px rgba(190, 120, 255, 0.52),
+    0 0 180px rgba(170, 110, 245, 0.30);
+  opacity: 0.96;
   transform-origin: 70% 30%;
   transition: transform 900ms ease, filter 900ms ease, opacity 700ms ease;
 }
+
 
 /* Meteors */
 .meteor::before {
   content: "";
   position: absolute;
-  width: 120px;
-  height: 18px;
+  width: 200px;   /* bigger tail */
+  height: 24px;   /* thicker */
   border-radius: 999px;
-  background: linear-gradient(90deg, rgba(255, 220, 173, 0.85), rgba(255, 161, 94, 0.1));
-  filter: blur(2px);
-  opacity: 0.58;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 240, 205, 0.98) 0%,
+    rgba(255, 190, 120, 0.85) 35%,
+    rgba(255, 145, 85, 0.28) 75%,
+    rgba(255, 145, 85, 0.02) 100%
+  );
+  filter: blur(1px);
+  opacity: 0.85;
 }
+
 .meteor-1::before {
-  top: 42%;
-  right: 28%;
-  transform: rotate(-30deg);
-  animation: meteorMove1 2.6s ease-in-out infinite;
+  top: 34%;
+  right: 18%;
+  transform: rotate(-29deg);
+  animation: meteorMove1 2.1s linear infinite;
 }
+
 .meteor-2::before {
-  top: 60%;
-  right: 22%;
-  transform: rotate(-32deg);
-  opacity: 0.35;
-  animation: meteorMove2 3.1s ease-in-out infinite;
+  top: 52%;
+  right: 12%;
+  transform: rotate(-31deg);
+  opacity: 0.70;
+  animation: meteorMove2 2.6s linear infinite;
 }
+
 @keyframes meteorMove1 {
-  0% { transform: translate(0, 0) rotate(-30deg); opacity: 0.0; }
-  20% { opacity: 0.7; }
-  100% { transform: translate(-180px, 140px) rotate(-30deg); opacity: 0.0; }
+  0%   { transform: translate(0, 0) rotate(-29deg); opacity: 0; }
+  12%  { opacity: 0.95; }
+  100% { transform: translate(-260px, 190px) rotate(-29deg); opacity: 0; }
 }
+
 @keyframes meteorMove2 {
-  0% { transform: translate(0, 0) rotate(-32deg); opacity: 0.0; }
-  20% { opacity: 0.4; }
-  100% { transform: translate(-140px, 100px) rotate(-32deg); opacity: 0.0; }
+  0%   { transform: translate(0, 0) rotate(-31deg); opacity: 0; }
+  15%  { opacity: 0.75; }
+  100% { transform: translate(-220px, 165px) rotate(-31deg); opacity: 0; }
 }
+
 
 .fog::before {
   content: "";
@@ -285,17 +300,18 @@ body {
 
 .scene-panel {
   position: relative;
-  z-index: 2;
+  z-index: 10;
   width: min(1040px, 92vw);
-  background: var(--panel-bg);
-  border: 1px solid var(--panel-border);
+  background: rgba(8, 18, 72, 0.32);   /* was darker */
+  border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 28px;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(5px);
   padding: 32px 36px 26px;
   box-shadow:
-    0 12px 30px rgba(3, 8, 28, 0.45),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+    0 12px 30px rgba(3, 8, 28, 0.38),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
 }
+
 
 .scene-title {
   margin: 0 0 6px 0;
