@@ -4,6 +4,20 @@
   "scenes": [
     {
       "id": "intro_impact",
+      "title": "Marzanna Hunt",
+      "speaker": "Choose an option:",
+      "body": "They are watching what you choose.",
+      "theme": "planet_entry",
+      "choices": [
+        {
+          "id": "b33",
+          "text": "START THE GAME",
+          "nextId": "theImpact"
+        }
+      ]
+    },
+    {
+      "id": "theImpact",
       "title": "Impact",
       "speaker": "System ",
       "body": "Asteroid shower incoming. Hull breach imminent. Navigation offline. Your partner's hand finds your in the dark.",
