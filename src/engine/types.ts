@@ -1,18 +1,24 @@
 export type Choice = {
+  id: string;
   text: string;
   nextId: string;
-  effects?: Record<string, number | boolean>;
 };
 
-export type StoryNode = {
+export type Scene = {
   id: string;
   title: string;
-  text: string;
+  body: string;
+  speaker?: string;
+  backgroundImage?: string;
+  ambienceAudio?: string;
+  theme?: "crash" | "wakeup" | "darkness" | "monster" | "guardian" | "endingSafe" | "endingRisk";
   choices?: Choice[];
   ending?: boolean;
 };
 
+
 export type StoryData = {
-  startId: string;
-  nodes: StoryNode[];
+  title: string;
+  startSceneId: string;
+  scenes: Scene[];
 };

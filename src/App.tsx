@@ -1,62 +1,148 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "./App.css";
 import storyDataRaw from "./data/story.json";
-import { applyEffects, getNode } from "./engine/storyEngine";
+import { getScene } from "./engine/storyEngine";
 import type { StoryData } from "./engine/types";
+import CinematicBackground from "./components/CinematicBackground";
 
+const storyData: StoryData = storyDataRaw as unknown as StoryData;
 
-const storyData = storyDataRaw as StoryData;
+type CharacterMode = "none" | "both" | "boyOnly" | "girlOnly" | "fadeGirl" | "fadeBoth";
+
+function getCharacterMode(sceneId: string): CharacterMode {
+  if (sceneId === "wake_alone") return "boyOnly";
+  if (sceneId === "path_divert_death") return "fadeBoth";
+  if (sceneId === "end_bad") return "fadeGirl";
+  return "both";
+}
+
+function getCamera(sceneId: string): string {
+  const sceneCameraMap: Record<string, string> = {
+    intro_impact: "shakeClose",
+    path_bulkhead: "planetZoomHard",
+    path_divert_death: "spinTilt",
+    path_transmit_crash: "slowPush",
+    wake_alone: "groundStill",
+    end_good: "hopeLift",
+    end_bad: "fadeOut",
+  };
+  return sceneCameraMap[sceneId] ?? "default";
+}
+
+function CharacterLayer({ sceneId }: { sceneId?: string }) {
+  const mode = getCharacterMode(sceneId ?? "");
+
+  const showBoy = mode === "both" || mode === "boyOnly" || mode === "fadeGirl" || mode === "fadeBoth";
+  const showGirl = mode === "both" || mode === "girlOnly" || mode === "fadeGirl" || mode === "fadeBoth";
+
+  const boyExtra = mode === "fadeBoth" ? "fade-out" : "";
+  const girlExtra =
+    mode === "fadeGirl" || mode === "fadeBoth"
+      ? "fade-out"
+      : mode === "boyOnly"
+      ? "hidden"
+      : "";
+
+  return (
+    <div className="character-layer" aria-hidden="true">
+      {showBoy && (
+        <div className={`char boy ${boyExtra}`}>
+          <div className="helmet" />
+          <div className="char-head">
+            <span className="eye left" />
+            <span className="eye right" />
+            <span className="mask" />
+          </div>
+          <div className="char-body" />
+          <div className="char-arm arm-left" />
+          <div className="char-arm arm-right" />
+          <div className="char-leg leg-left" />
+          <div className="char-leg leg-right" />
+        </div>
+      )}
+
+      {showGirl && (
+        <div className={`char girl ${girlExtra}`}>
+          <div className="helmet" />
+          <div className="char-head">
+            <span className="eye left" />
+            <span className="eye right" />
+            <span className="mask" />
+          </div>
+          <div className="char-body" />
+          <div className="char-arm arm-left" />
+          <div className="char-arm arm-right" />
+          <div className="char-leg leg-left" />
+          <div className="char-leg leg-right" />
+        </div>
+      )}
+    </div>
+  );
+}
 
 function App() {
-  const [currentId, setCurrentId] = useState(storyData.startId);
-  const [state, setState] = useState<Record<string, number | boolean>>({});
-  const [path, setPath] = useState<string[]>([storyData.startId]);
+  const [currentId, setCurrentId] = useState(storyData.startSceneId);
+  const [path, setPath] = useState<string[]>([storyData.startSceneId]);
 
-  const node = useMemo(() => getNode(storyData, currentId), [currentId]);
+  const scene = useMemo(() => getScene(storyData, currentId), [currentId]);
 
-  if (!node) {
-    return <div className="app"><p>Story node not found.</p></div>;
+  useEffect(() => {
+    if (!scene) return;
+  }, [scene]);
+
+  if (!scene) {
+    return (
+      <div className="app app-shell theme-wakeup">
+        <p>Scene not found.</p>
+      </div>
+    );
   }
 
-  const handleChoice = (choiceText: string, nextId: string, effects?: Record<string, number | boolean>) => {
-    setState((prev) => applyEffects(prev, effects));
+  const sceneTheme = (scene as any).theme ?? "crash_base";
+  const camera = getCamera(scene.id);
+
+  const handleChoice = (nextId: string) => {
     setCurrentId(nextId);
     setPath((prev) => [...prev, nextId]);
-    console.log("Choice:", choiceText, "State:", state);
   };
 
   const restart = () => {
-    setCurrentId(storyData.startId);
-    setState({});
-    setPath([storyData.startId]);
+    setCurrentId(storyData.startSceneId);
+    setPath([storyData.startSceneId]);
   };
 
   return (
-    <div className="app">
-      <div className="card">
-        <h1>{node.title}</h1>
-        <p>{node.text}</p>
+    <div className={`app app-shell theme-${sceneTheme}`}>
+      <CinematicBackground theme={sceneTheme} camera={camera} />
+      <CharacterLayer sceneId={scene.id} />
 
-        {!node.ending && node.choices && (
+      <main className="scene-panel">
+        <h1 className="scene-title">{scene.title}</h1>
+        {scene.speaker && <h2 className="scene-speaker">{scene.speaker}</h2>}
+        <p className="story-body">{scene.body}</p>
+
+        {!scene.ending && scene.choices?.length ? (
           <div className="choices">
-            {node.choices.map((choice, idx) => (
+            {scene.choices.map((choice: any) => (
               <button
-                key={idx}
-                onClick={() => handleChoice(choice.text, choice.nextId, choice.effects)}
+                key={choice.id}
+                className="choice-btn"
+                onClick={() => handleChoice(choice.nextId)}
               >
                 {choice.text}
               </button>
             ))}
           </div>
-        )}
-
-        {node.ending && (
-          <div className="ending">
-            <button onClick={restart}>Restart Story</button>
-            <p className="path">Path: {path.join(" → ")}</p>
+        ) : (
+          <div className="choices">
+            <button className="choice-btn" onClick={restart}>
+              Restart Story
+            </button>
           </div>
         )}
-      </div>
+
+        <div className="path-text">Path: {path.join(" → ")}</div>
+      </main>
     </div>
   );
 }
