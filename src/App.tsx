@@ -6,6 +6,8 @@ import type { StoryData } from "./engine/types";
 import CinematicBackground from "./components/CinematicBackground";
 import BackgroundAudio from "./components/BackgroundAudio";
 import TypewriterText from "./components/TypewriterText";
+import "./App.css";
+
 
 const storyData: StoryData = storyDataRaw as unknown as StoryData;
 
@@ -119,7 +121,14 @@ function App() {
       />
 
       <div className={`app app-shell theme-${sceneTheme}`}>
-        <CinematicBackground theme={sceneTheme} camera={camera} />
+      <CinematicBackground
+      theme={sceneTheme}
+      camera={camera}
+      fxOverlay={["warningFlash", "glitchLines", "signalNoise", "screenShake"]}
+      text={scene.body}
+      />
+
+
         <CharacterLayer sceneId={scene.id} />
 
         <main className="scene-panel">

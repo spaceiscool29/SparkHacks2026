@@ -539,3 +539,486 @@ body {
 /* Keep existing layers clear */
 .char .char-head { z-index: 3; }
 .char .helmet { z-index: 4; }
+
+/* ===== Cinematic base ===== */
+.bg-root {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  background: radial-gradient(circle at 20% 20%, #1f3a8a 0%, #0b1b5c 35%, #070b2a 100%);
+}
+
+.stars, .nebula, .planet, .meteor, .smoke, .fx-layer {
+  position: absolute;
+  pointer-events: none;
+}
+
+.stars {
+  inset: 0;
+  background-image:
+    radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,.7), transparent 60%),
+    radial-gradient(1.5px 1.5px at 35% 65%, rgba(255,255,255,.6), transparent 60%),
+    radial-gradient(1.5px 1.5px at 70% 35%, rgba(255,255,255,.5), transparent 60%),
+    radial-gradient(2px 2px at 85% 80%, rgba(255,255,255,.65), transparent 60%);
+  animation: starsDrift 20s linear infinite;
+}
+
+.nebula {
+  inset: -10%;
+  background:
+    radial-gradient(circle at 75% 35%, rgba(192, 132, 252, .25), transparent 40%),
+    radial-gradient(circle at 20% 75%, rgba(56, 189, 248, .18), transparent 45%);
+  filter: blur(6px);
+}
+
+.planet {
+  width: 36vw;
+  height: 36vw;
+  right: -8vw;
+  top: 18vh;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, rgba(255,200,220,.28), rgba(140,80,220,.35) 50%, rgba(90,40,150,.25) 70%, transparent 72%);
+  transform-origin: center;
+  transition: transform 700ms ease;
+}
+
+.meteor {
+  width: 180px;
+  height: 4px;
+  background: linear-gradient(to right, rgba(255,255,255,.9), rgba(255,255,255,0));
+  filter: blur(1px);
+  opacity: .35;
+  animation: meteorFly 8s linear infinite;
+}
+.meteor-1 { top: 18%; left: 20%; animation-delay: 0s; }
+.meteor-2 { top: 48%; left: 55%; animation-delay: 2s; }
+.meteor-3 { top: 70%; left: 35%; animation-delay: 4s; }
+
+.smoke {
+  width: 30vw;
+  height: 30vw;
+  border-radius: 50%;
+  filter: blur(30px);
+  background: radial-gradient(circle, rgba(255,255,255,.08), transparent 65%);
+  opacity: .25;
+}
+.smoke-1 { left: -8vw; bottom: -8vh; animation: smokeFloat 12s ease-in-out infinite; }
+.smoke-2 { right: 8vw; top: 8vh; animation: smokeFloat 14s ease-in-out infinite reverse; }
+
+/* ===== Camera behaviors ===== */
+.camera-shakeClose .bg-root { animation: camShake 650ms ease-in-out infinite; }
+.camera-planetZoomHard .planet,
+.fx-planet-zoom-hard {
+  transform: scale(1.28) translate(-6%, 2%);
+}
+.camera-spinTilt .bg-root { animation: camTilt 6s ease-in-out infinite; }
+.camera-slowPush .bg-root { animation: camPush 7s ease-in-out infinite; }
+.camera-groundStill .bg-root { animation: none; }
+.camera-hopeLift .bg-root { animation: camLift 6s ease-in-out infinite; }
+.camera-fadeOut .bg-root { animation: camFade 2.5s ease forwards; }
+
+/* ===== Generic fx layer ===== */
+.fx-layer { inset: 0; z-index: 2; }
+
+/* Wind / storm */
+.fx-wind {
+  background:
+    linear-gradient(120deg, transparent 0 35%, rgba(255,255,255,.06) 45%, transparent 55%),
+    linear-gradient(120deg, transparent 0 55%, rgba(255,255,255,.05) 65%, transparent 75%);
+  animation: windSweep 2.2s linear infinite;
+}
+
+/* Blood scene */
+.fx-blood {
+  background:
+    linear-gradient(to bottom,
+      rgba(120, 0, 0, .45) 0%,
+      rgba(120, 0, 0, .18) 8%,
+      rgba(120, 0, 0, 0) 18%);
+  animation: bloodDrip 3.2s ease-in-out infinite;
+  mix-blend-mode: multiply;
+}
+
+/* Radio static */
+.fx-static {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,.07) 0 1px,
+    rgba(0,0,0,0) 1px 3px
+  );
+  opacity: .22;
+  animation: staticFlicker 120ms steps(2, end) infinite;
+}
+
+/* Extra glitch lines */
+.fx-glitch-lines {
+  background-image:
+    repeating-linear-gradient(to bottom, rgba(255,255,255,.08) 0 1px, transparent 1px 4px);
+  mix-blend-mode: screen;
+  opacity: .18;
+  animation: glitchMove .8s linear infinite;
+}
+
+/* Beacon pulse */
+.fx-beacon {
+  background:
+    radial-gradient(circle at 75% 45%, rgba(140, 220, 255, .22) 0 6%, transparent 20%),
+    radial-gradient(circle at 75% 45%, rgba(140, 220, 255, .15) 0 10%, transparent 28%);
+  animation: beaconPulse 1.7s ease-out infinite;
+}
+
+/* Shake */
+.fx-shake { animation: camShake .45s ease-in-out infinite; }
+.fx-shake-hard { animation: camShake .22s linear infinite; }
+.fx-jolt { animation: camJolt 700ms ease-in-out infinite; }
+
+.fx-warning-flash {
+  background: rgba(255, 80, 80, .12);
+  animation: warningFlash 1.2s steps(2, end) infinite;
+}
+
+.fx-blackout {
+  background: rgba(0,0,0,.45);
+  animation: blackoutPulse 2.2s ease-in-out infinite;
+}
+
+.fx-vignette-heavy {
+  background: radial-gradient(circle, transparent 45%, rgba(0,0,0,.65) 100%);
+}
+
+.fx-sparks {
+  background:
+    radial-gradient(2px 2px at 20% 30%, rgba(255,200,120,.7), transparent 70%),
+    radial-gradient(2px 2px at 45% 65%, rgba(255,220,180,.65), transparent 70%),
+    radial-gradient(2px 2px at 70% 40%, rgba(255,190,120,.7), transparent 70%);
+  animation: sparksTwinkle 0.9s steps(2, end) infinite;
+  opacity: .5;
+}
+
+.fx-debris {
+  background:
+    linear-gradient(110deg, transparent 30%, rgba(210,210,210,.12) 45%, transparent 55%);
+  animation: debrisPass 2.8s linear infinite;
+}
+
+.fx-dust {
+  background:
+    radial-gradient(circle at 20% 80%, rgba(220,220,220,.15), transparent 35%),
+    radial-gradient(circle at 75% 20%, rgba(220,220,220,.12), transparent 30%);
+  animation: dustFloat 4s ease-in-out infinite;
+  opacity: .3;
+}
+
+.fx-frost {
+  background:
+    radial-gradient(circle at 10% 10%, rgba(180,220,255,.18), transparent 40%),
+    radial-gradient(circle at 90% 90%, rgba(180,220,255,.14), transparent 45%);
+}
+
+.fx-light-sweep {
+  background: linear-gradient(110deg, transparent 35%, rgba(255,255,255,.12) 50%, transparent 65%);
+  animation: lightSweep 2.8s linear infinite;
+}
+
+.fx-long-fade { animation: longFade 4.5s ease-in-out infinite; }
+.fx-grain {
+  background-image:
+    repeating-radial-gradient(circle at 50% 50%, rgba(255,255,255,.03) 0 1px, transparent 1px 3px);
+  opacity: .25;
+  animation: grainShift .35s steps(2, end) infinite;
+}
+.fx-eye-glow { box-shadow: inset 0 0 120px rgba(255, 90, 90, .08); }
+.fx-question-pulse { animation: softPulse 2s ease-in-out infinite; }
+.fx-decision-flash { animation: decisionFlash 1.5s steps(2, end) infinite; }
+.fx-soft-pulse { animation: softPulse 2.8s ease-in-out infinite; }
+.fx-shadow-drift { animation: shadowDrift 6s ease-in-out infinite; }
+.fx-time-slow { backdrop-filter: blur(1.5px); }
+.fx-edge-blur { box-shadow: inset 0 0 100px rgba(0,0,0,.35); }
+.fx-blink-shadow { animation: blinkShadow 1.4s steps(2, end) infinite; }
+.fx-glitch-breath { animation: glitchBreath 1.8s ease-in-out infinite; }
+
+/* ===== Keyframes ===== */
+@keyframes starsDrift { from { transform: translateY(0); } to { transform: translateY(8px); } }
+@keyframes meteorFly { 0% { transform: translate(0,0) rotate(-20deg); opacity: 0; } 10% { opacity: .4; } 100% { transform: translate(420px,180px) rotate(-20deg); opacity: 0; } }
+@keyframes smokeFloat { 0%,100% { transform: translateY(0) scale(1);} 50% { transform: translateY(-20px) scale(1.07);} }
+
+@keyframes camShake {
+  0%,100% { transform: translate(0,0); }
+  25% { transform: translate(-2px, 1px); }
+  50% { transform: translate(2px, -1px); }
+  75% { transform: translate(-1px, -1px); }
+}
+@keyframes camJolt { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-6px);} 40% { transform: translateX(4px);} 60% { transform: translateX(-2px);} }
+@keyframes camTilt { 0%,100% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(.8deg) scale(1.02); } }
+@keyframes camPush { 0%,100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+@keyframes camLift { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes camFade { to { opacity: .2; filter: blur(2px); } }
+
+@keyframes windSweep { from { transform: translateX(-25%);} to { transform: translateX(25%);} }
+@keyframes bloodDrip { 0%,100% { opacity: .28; } 50% { opacity: .5; } }
+@keyframes staticFlicker { 0%,100% { opacity: .2; } 50% { opacity: .32; } }
+@keyframes glitchMove { 0% { transform: translateY(0);} 50% { transform: translateY(-2px);} 100% { transform: translateY(0);} }
+@keyframes beaconPulse { 0% { opacity: .2; } 50% { opacity: .65; } 100% { opacity: .2; } }
+@keyframes warningFlash { 0%,100% { opacity: 0; } 50% { opacity: 1; } }
+@keyframes blackoutPulse { 0%,100% { opacity: .2; } 50% { opacity: .6; } }
+@keyframes sparksTwinkle { 0%,100% { opacity: .2; } 50% { opacity: .6; } }
+@keyframes debrisPass { from { transform: translateX(-25%);} to { transform: translateX(35%);} }
+@keyframes dustFloat { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-12px);} }
+@keyframes lightSweep { from { transform: translateX(-35%);} to { transform: translateX(35%);} }
+@keyframes longFade { 0%,100% { opacity: .15; } 50% { opacity: .4; } }
+@keyframes grainShift { from { transform: translate(0,0);} to { transform: translate(1px, -1px);} }
+@keyframes softPulse { 0%,100% { opacity: .12; } 50% { opacity: .25; } }
+@keyframes decisionFlash { 0%,100% { opacity: 0; } 50% { opacity: .35; background: rgba(255, 90, 90, .12);} }
+@keyframes shadowDrift { 0%,100% { opacity: .18; } 50% { opacity: .35; } }
+@keyframes blinkShadow { 0%,100% { opacity: .1; } 50% { opacity: .28; } }
+@keyframes glitchBreath {
+  0%,100% { filter: saturate(1) contrast(1); }
+  50% { filter: saturate(1.25) contrast(1.08); }
+}
+
+.bg-root {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.scene-panel {
+  position: relative;
+  z-index: 10;
+}
+
+.fx-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* =========================
+   FINAL ANIMATION OVERRIDES
+   ========================= */
+
+/* Layering */
+.cinematic-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+.scene-panel {
+  position: relative;
+  z-index: 10;
+}
+.character-layer {
+  z-index: 11;
+}
+
+/* FX layers visible above bg visuals */
+.cinematic-bg .fx-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Camera alias support */
+.cinematic-bg.cam-shakeClose { animation: camShake 650ms ease-in-out infinite; }
+.cinematic-bg.cam-spinTilt { animation: camTilt 6s ease-in-out infinite; }
+.cinematic-bg.cam-slowPush { animation: camPush 7s ease-in-out infinite; }
+.cinematic-bg.cam-hopeLift { animation: camLift 6s ease-in-out infinite; }
+.cinematic-bg.cam-fadeOut { animation: camFade 2.5s ease forwards; }
+
+/* Keep planet close on zoom scenes */
+.cinematic-bg.cam-planetZoomHard .planet::before,
+.fx-planet-zoom-hard {
+  transform: scale(1.28) translate(-6%, 2%) !important;
+}
+
+/* FX overlays */
+.fx-wind {
+  background:
+    linear-gradient(120deg, transparent 0 35%, rgba(255,255,255,.08) 45%, transparent 55%),
+    linear-gradient(120deg, transparent 0 55%, rgba(255,255,255,.06) 65%, transparent 75%);
+  animation: windSweep 2.2s linear infinite;
+}
+
+.fx-blood {
+  background:
+    linear-gradient(to bottom,
+      rgba(120, 0, 0, .48) 0%,
+      rgba(120, 0, 0, .2) 8%,
+      rgba(120, 0, 0, 0) 18%);
+  animation: bloodDrip 3.2s ease-in-out infinite;
+  mix-blend-mode: multiply;
+}
+
+.fx-static {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,.08) 0 1px,
+    rgba(0,0,0,0) 1px 3px
+  );
+  opacity: .25;
+  animation: staticFlicker 120ms steps(2, end) infinite;
+}
+
+.fx-glitch-lines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,.09) 0 1px,
+    transparent 1px 4px
+  );
+  mix-blend-mode: screen;
+  opacity: .2;
+  animation: glitchMove .8s linear infinite;
+}
+
+.fx-beacon {
+  background:
+    radial-gradient(circle at 75% 45%, rgba(140,220,255,.24) 0 6%, transparent 20%),
+    radial-gradient(circle at 75% 45%, rgba(140,220,255,.15) 0 10%, transparent 28%);
+  animation: beaconPulse 1.7s ease-out infinite;
+}
+
+.fx-shake { animation: camShake .45s ease-in-out infinite; }
+.fx-shake-hard { animation: camShake .22s linear infinite; }
+.fx-jolt { animation: camJolt 700ms ease-in-out infinite; }
+
+.fx-warning-flash {
+  background: rgba(255, 80, 80, .14);
+  animation: warningFlash 1.2s steps(2, end) infinite;
+}
+
+.fx-blackout {
+  background: rgba(0,0,0,.48);
+  animation: blackoutPulse 2.2s ease-in-out infinite;
+}
+
+.fx-vignette-heavy {
+  background: radial-gradient(circle, transparent 45%, rgba(0,0,0,.7) 100%);
+}
+
+.fx-sparks {
+  background:
+    radial-gradient(2px 2px at 20% 30%, rgba(255,200,120,.75), transparent 70%),
+    radial-gradient(2px 2px at 45% 65%, rgba(255,220,180,.68), transparent 70%),
+    radial-gradient(2px 2px at 70% 40%, rgba(255,190,120,.72), transparent 70%);
+  animation: sparksTwinkle 0.9s steps(2, end) infinite;
+  opacity: .55;
+}
+
+.fx-debris {
+  background: linear-gradient(110deg, transparent 30%, rgba(210,210,210,.13) 45%, transparent 55%);
+  animation: debrisPass 2.8s linear infinite;
+}
+
+.fx-dust {
+  background:
+    radial-gradient(circle at 20% 80%, rgba(220,220,220,.16), transparent 35%),
+    radial-gradient(circle at 75% 20%, rgba(220,220,220,.12), transparent 30%);
+  animation: dustFloat 4s ease-in-out infinite;
+  opacity: .35;
+}
+
+.fx-frost {
+  background:
+    radial-gradient(circle at 10% 10%, rgba(180,220,255,.2), transparent 40%),
+    radial-gradient(circle at 90% 90%, rgba(180,220,255,.14), transparent 45%);
+}
+
+.fx-light-sweep {
+  background: linear-gradient(110deg, transparent 35%, rgba(255,255,255,.13) 50%, transparent 65%);
+  animation: lightSweep 2.8s linear infinite;
+}
+
+.fx-long-fade { animation: longFade 4.5s ease-in-out infinite; }
+
+.fx-grain {
+  background-image: repeating-radial-gradient(
+    circle at 50% 50%,
+    rgba(255,255,255,.03) 0 1px,
+    transparent 1px 3px
+  );
+  opacity: .28;
+  animation: grainShift .35s steps(2, end) infinite;
+}
+
+.fx-eye-glow { box-shadow: inset 0 0 120px rgba(255, 90, 90, .1); }
+.fx-question-pulse { animation: softPulse 2s ease-in-out infinite; }
+.fx-decision-flash { animation: decisionFlash 1.5s steps(2, end) infinite; }
+.fx-soft-pulse { animation: softPulse 2.8s ease-in-out infinite; }
+.fx-shadow-drift { animation: shadowDrift 6s ease-in-out infinite; }
+.fx-time-slow { backdrop-filter: blur(1.5px); }
+.fx-edge-blur { box-shadow: inset 0 0 100px rgba(0,0,0,.38); }
+.fx-blink-shadow { animation: blinkShadow 1.4s steps(2, end) infinite; }
+.fx-glitch-breath { animation: glitchBreath 1.8s ease-in-out infinite; }
+
+/* Keyframes (safe duplicates to force availability) */
+@keyframes windSweep { from { transform: translateX(-25%);} to { transform: translateX(25%);} }
+@keyframes bloodDrip { 0%,100% { opacity: .28; } 50% { opacity: .52; } }
+@keyframes staticFlicker { 0%,100% { opacity: .22; } 50% { opacity: .34; } }
+@keyframes glitchMove { 0% { transform: translateY(0);} 50% { transform: translateY(-2px);} 100% { transform: translateY(0);} }
+@keyframes beaconPulse { 0% { opacity: .2; } 50% { opacity: .68; } 100% { opacity: .2; } }
+@keyframes warningFlash { 0%,100% { opacity: 0; } 50% { opacity: 1; } }
+@keyframes blackoutPulse { 0%,100% { opacity: .2; } 50% { opacity: .6; } }
+@keyframes sparksTwinkle { 0%,100% { opacity: .2; } 50% { opacity: .65; } }
+@keyframes debrisPass { from { transform: translateX(-25%);} to { transform: translateX(35%);} }
+@keyframes dustFloat { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-12px);} }
+@keyframes lightSweep { from { transform: translateX(-35%);} to { transform: translateX(35%);} }
+@keyframes longFade { 0%,100% { opacity: .15; } 50% { opacity: .45; } }
+@keyframes grainShift { from { transform: translate(0,0);} to { transform: translate(1px, -1px);} }
+@keyframes softPulse { 0%,100% { opacity: .12; } 50% { opacity: .26; } }
+@keyframes decisionFlash { 0%,100% { opacity: 0; } 50% { opacity: .35; background: rgba(255, 90, 90, .12);} }
+@keyframes shadowDrift { 0%,100% { opacity: .18; } 50% { opacity: .35; } }
+@keyframes blinkShadow { 0%,100% { opacity: .1; } 50% { opacity: .28; } }
+@keyframes glitchBreath { 0%,100% { filter: saturate(1) contrast(1); } 50% { filter: saturate(1.25) contrast(1.08); } }
+
+/* Debug helper, optional */
+.fx-test-border {
+  box-sizing: border-box;
+  border: 6px solid rgba(255, 0, 0, 0.8);
+}
+
+/* --- force FX visibility --- */
+.cinematic-bg { position: fixed; inset: 0; z-index: 0; overflow: hidden; }
+.scene-panel { position: relative; z-index: 10; }
+.character-layer { z-index: 11; }
+
+.cinematic-bg .fx-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 5 !important;
+  pointer-events: none;
+}
+
+/* stronger temporary debug intensity */
+.fx-warning-flash {
+  background: rgba(255, 40, 40, 0.28) !important;
+  animation: warningFlash 0.9s steps(2, end) infinite;
+}
+
+.fx-static {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,.16) 0 1px,
+    rgba(0,0,0,0) 1px 3px
+  ) !important;
+  opacity: .45 !important;
+  animation: staticFlicker 90ms steps(2, end) infinite;
+}
+
+.fx-glitch-lines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,.18) 0 1px,
+    transparent 1px 4px
+  ) !important;
+  opacity: .35 !important;
+  animation: glitchMove .7s linear infinite;
+}
+
+.fx-shake {
+  animation: camShake .28s linear infinite;
+}
+

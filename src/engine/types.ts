@@ -4,18 +4,21 @@ export type Choice = {
   nextId: string;
 };
 
+export type SceneFx = {
+  ambient?: string[];
+  overlay?: string[];
+};
+
 export type Scene = {
   id: string;
   title: string;
-  body: string;
   speaker?: string;
-  backgroundImage?: string;
-  ambienceAudio?: string;
-  theme?: "crash" | "wakeup" | "darkness" | "monster" | "guardian" | "endingSafe" | "endingRisk";
+  body?: string;
+  theme?: string;
   choices?: Choice[];
   ending?: boolean;
+  fx?: SceneFx;
 };
-
 
 export type StoryData = {
   title: string;
