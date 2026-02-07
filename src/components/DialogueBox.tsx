@@ -2,14 +2,13 @@ import { useEffect, useMemo, useState } from "react";
 
 type Props = {
   text: string;
-  speed?: number; // ms per character
+  speed?: number; 
   onDone?: () => void;
 };
 
 export default function DialogueBox({ text, speed = 24, onDone }: Props) {
   const [visibleCount, setVisibleCount] = useState(0);
 
-  // Typing animation ONLY - no reset logic
   useEffect(() => {
     if (!text || visibleCount >= text.length) {
       if (visibleCount >= text.length && text.length > 0) {

@@ -4,7 +4,7 @@ import storyDataRaw from "./data/story.json";
 import { getScene } from "./engine/storyEngine";
 import type { StoryData } from "./engine/types";
 import CinematicBackground from "./components/CinematicBackground";
-import BackgroundAudio from './components/BackgroundAudio'; // ADD THIS IMPORT
+import BackgroundAudio from './components/BackgroundAudio'; 
 
 const storyData: StoryData = storyDataRaw as unknown as StoryData;
 

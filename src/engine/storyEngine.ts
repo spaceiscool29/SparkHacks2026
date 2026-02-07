@@ -1,16 +1,11 @@
 import type { StoryData, Scene } from "./types";
 
-/**
- * Returns one scene by id.
- */
+
 export function getScene(data: StoryData, id: string): Scene | undefined {
   return data.scenes.find((scene) => scene.id === id);
 }
 
-/**
- * Safe helper to move to next scene from a choice.
- * (Optional now, useful later)
- */
+
 export function getNextScene(
   data: StoryData,
   currentSceneId: string,
@@ -25,10 +20,7 @@ export function getNextScene(
   return getScene(data, choice.nextId);
 }
 
-/**
- * Optional validator for debugging broken links in story.json.
- * Returns a list of missing scene IDs referenced by choices.
- */
+
 export function validateStoryLinks(data: StoryData): string[] {
   const sceneIds = new Set(data.scenes.map((s) => s.id));
   const missing: string[] = [];

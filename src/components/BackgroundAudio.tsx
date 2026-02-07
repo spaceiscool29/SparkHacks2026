@@ -42,7 +42,7 @@ const BackgroundAudio: React.FC<BackgroundAudioProps> = ({
       audio.volume = currentVolume;
       audio.loop = loop;
       
-      // Try to autoplay, but don't worry if it fails
+
       audio.play().catch(error => {
         console.log('Audio will play after user interaction:', error.message);
       });
