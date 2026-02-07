@@ -4,24 +4,24 @@
   "scenes": [
     {
       "id": "intro_impact",
-      "title": "Scene 1: Impact",
-      "speaker": "SYSTEM",
-      "body": "Asteroid shower incoming. Hull integrity collapsing. Navigation offline.",
+      "title": "Impact",
+      "speaker": "System ",
+      "body": "Asteroid shower incoming. Hull breach imminent. Navigation offline. Your partner's hand finds your in the dark.",
       "theme": "crash_base",
       "choices": [
         {
           "id": "c1",
-          "text": "Seal cockpit bulkhead and attempt emergency landing",
+          "text": "Seal cockpit bulkhead and attempt emergency landing. Leave it to fate.",
           "nextId": "path_bulkhead"
         },
         {
           "id": "c2",
-          "text": "Divert power to shields",
+          "text": "Pour everything into the shields.",
           "nextId": "path_divert_death"
         },
         {
           "id": "c3",
-          "text": "Transmit final message and hold course",
+          "text": "Transmit final message. Hold course",
           "nextId": "path_transmit_crash"
         }
       ]
@@ -30,7 +30,7 @@
       "id": "path_bulkhead",
       "title": "Emergency Descent",
       "speaker": "NARRATOR",
-      "body": "You seal the cockpit, but power reroutes into control systems. You lose fine control and crash-land on the planet. You and your partner lock oxygen masks and brace for impact.",
+      "body": "You seal the cockpit but power surges, control fails. The planet rushes up. You and your partner lock oxygen masks and brace for impact as the world goes dark.",
       "theme": "planet_entry",
       "choices": [
         {
@@ -44,7 +44,7 @@
       "id": "path_divert_death",
       "title": "System Collapse",
       "speaker": "NARRATOR",
-      "body": "You divert power, but the system shorts. The ship enters uncontrolled freefall. Structural failure becomes total. You do not survive.",
+      "body": "You divert power, but the grid overloads. The ship enters uncontrolled freefall. Structural failure becomes total. You do not survive.",
       "theme": "void_death",
       "ending": true
     },
@@ -52,7 +52,7 @@
       "id": "path_transmit_crash",
       "title": "Last Broadcast",
       "speaker": "PLAYER 1",
-      "body": "This is Ship... we have lost full control. We are crash-landing on the planet. This may be our last message. We hold course as systems fail. The screen goes dark.",
+      "body": "\"Mayday. Ship… lost. Crashing. We hold course.\"  You squeeze their hand. Static. Then nothing.",
       "theme": "blackout_entry",
       "choices": [
         {
@@ -64,9 +64,9 @@
     },
     {
       "id": "wake_alone",
-      "title": "Scene 2: Wreckage",
+      "title": "Wreckage",
       "speaker": "NARRATOR",
-      "body": "You wake in twisted metal and silence. Your partner is missing. Wind scrapes across the wreck. One oxygen canister remains.",
+      "body": "Cold metal. Wind. A single, blinking oxygen canister. The other seat is empty, harness shredded.",
       "theme": "wakeup",
       "choices": [
         {
@@ -76,16 +76,16 @@
         },
         {
           "id": "c5",
-          "text": "Stay near the ship and conserve oxygen",
+          "text": "Stay near the ship and conserve oxygen. Wait for rescue",
           "nextId": "end_bad"
         }
       ]
     },
     {
       "id": "end_good",
-      "title": "Ending: Signal Found",
+      "title": "Signal Found",
       "speaker": "NARRATOR",
-      "body": "You find signs your partner survived. A faint beacon pulses in the storm. Hope returns.",
+      "body": "The beacon's steady glow is a heartbeat in the void. They're alive. They're waiting.",
       "theme": "endingSafe",
       "choices": [
       {
@@ -97,33 +97,33 @@
     },
     {
       "id": "end_bad",
-      "title": "Ending: Containment Failure",
+      "title": "Containment Failure",
       "speaker": "NARRATOR",
-      "body": "You wait too long in the wreckage. Oxygen runs out. The planet goes dark.",
+      "body": "You wait too long in the wreckage. Oxygen runs out. Your vision goes dark and the silence is complete and everlasting.",
       "theme": "endingRisk",
       "ending": true
     },
     {
       "id": "voyage",
-      "title": "Scene 2: Voyage",
+      "title": "Voyage",
       "speaker": "NARRATOR",
-      "body": "You walk towards the beacon, each step crunching against the jagged, alien terrain.The beacon pulses steadily ahead, a small comfort in the vast, unfamiliar world. A towering alien figure steps from the shadows, its eyes fixed on you.",
+      "body": "A shadow peels from the canyon wall. It is tall, terrible, and its eyes are pits of cold judgment.",
       "choices": [
         {
           "id": "c15",
-          "text": "You try to run away.",
+          "text": "Run Away.",
           "nextId": "toBeStopped"
         },
         {
           "id": "c16",
-          "text": "You stay strong and awaits for the monster to speak.",
+          "text": "Stay Strong",
           "nextId": "stayStrong"
         }
       ]
     },
     {
       "id": "toBeStopped",
-      "title": "Scene 2: Voyage",
+      "title": "Voyage",
       "speaker": "NARRATOR",
       "body": "You feel that your body is not moving, as if something *or someone* is holding you in place.",
       "choices": [
@@ -136,9 +136,9 @@
     },
     {
       "id": "runAway",
-      "title": "Scene 2: Voyage",
-      "speaker": "Alien",
-      "body": "You, humans, are worthless creatures, I will question you to determine if you deserve to live.",
+      "title": "Voyage",
+      "speaker": "Monster",
+      "body": "You, humans, are worthless creatures, Prove your soul has weight.",
       "choices": [
       {
         "id": "next",
@@ -149,9 +149,9 @@
     },
     {
       "id": "stayStrong",
-      "title": "Scene 3: Alien",
-      "speaker": "Alien",
-      "body": "I am surpried that you are not trying to escape *based on previous experience*. You, humans, are worthless creatures, I will question you to determine if you deserve to live.",
+      "title": "Morality",
+      "speaker": "Monster",
+      "body": "'You do not run. Curious. The other did. Answer. Your worth hangs in the balance.'",
       "choices": [
       {
         "id": "next",
@@ -162,8 +162,8 @@
     },
     {
       "id": "alienQA",
-      "title": "Scene 3: Alien",
-      "speaker": "ALIEN",
+      "title": "Morality",
+      "speaker": "Monster",
       "body": "Someone you love deeply holds a belief you find abhorrent. To truly save them from it, would you:",
       "theme": "First question",
       "choices": [
@@ -181,8 +181,8 @@
     },
     {
       "id": "interes",
-      "title": "Scene 3: Alien",
-      "speaker": "Alien",
+      "title": "Morality",
+      "speaker": "Monster",
       "body": "An intriguing choice.",
       "choices": [
       {
@@ -194,9 +194,9 @@
     },
     {
       "id": "second_q",
-      "title": "Scene 3: Alien",
-      "speaker": "ALIEN",
-      "body": "Your partner is closer to it. If you sabotage them, your claim is secure. They would never know it was you. Is your professional camaraderie stronger than your desire to succeed?",
+      "title": "Morality",
+      "speaker": "Monster",
+      "body": "Your partner is closer to the beacon. If you sabotage them, your claim is secure. They would never know it was you. Is your professional camaraderie stronger than your desire to succeed?",
       "theme": "Second question",
       "choices": [
         {
@@ -213,8 +213,8 @@
     },
     {
       "id": "choice",
-      "title": "Scene 3: Alien",
-      "speaker": "Alien",
+      "title": "Morality",
+      "speaker": "Monster",
       "body": "Interesting decision",
       "choices": [
       {
@@ -226,9 +226,9 @@
     },
     {
       "id": "third_q",
-      "title": "Scene 3: Alien",
-      "speaker": "ALIEN",
-      "body": "I watched your coworker enter my domain. They spoke of you. They believed you would hesitate in the final moment, that your moral squeamishness made you weak. Does this change your desire to find them?",
+      "title": "Morality",
+      "speaker": "Monster",
+      "body": "I watched your partner enter my domain. They spoke of you. They believed you would hesitate in the final moment, that your moral squeamishness made you weak. Does this change your desire to find them?",
       "theme": "Third question",
       "choices": [
         {
@@ -245,8 +245,8 @@
     },
     {
       "id": "pec",
-      "title": "Scene 3: Alien",
-      "speaker": "Alien",
+      "title": "Morality",
+      "speaker": "Monster",
       "body": "How peculiar.",
       "choices": [
       {
@@ -258,19 +258,19 @@
     },
     {
       "id": "fourth_q",
-      "title": "Scene 3: Alien",
-      "speaker": "ALIEN",
-      "body": "I will let you go further and find the gem but your working partner will die the moment you see it. Will you accept?",
+      "title": "Morality",
+      "speaker": "Monster",
+      "body": "I will let you go further but your partner will die. Will you accept?",
       "theme": "Fourth question",
       "choices": [
         {
           "id": "c12",
-          "text": "No. Even if they think I am weak. I refuse to let them die. I care about them too much and my herat is too soft to eveb think of a momnet where i willingly let harm come to them. Even if it is at the cost of my own life, it is a choice that I make.",
+          "text": "No. Even if they think I am weak. I refuse to let them die. Even if it is at the cost of my own life, it is a choice that I make.",
           "nextId": "nice"
         },
         {
           "id": "c13",
-          "text": "Yes….Its unfortunate…and i think I will regret this decision for the rest of my life..but I cant do this anymore..the fighting,..the pain..the choices that i hae had to make..maybe there is a change where i can succeed..and isnt that what they would want for me?",
+          "text": "Yes. I'm tired of losing. Maybe this is how I win.",
           "nextId": "not_nice"
         }
       ]
@@ -278,8 +278,8 @@
     {
       "id": "nice",
       "title": "Ending",
-      "speaker": "Alien",
-      "body": "...a hard choice..and yet one that you made for the sake of your partner.. For a chance forr them to be happy. You have chosen the right answer it was a hard choice..and yet it was also the one made from your heart and not from ill intentions. This proves that you are of pure heart. You may go forth. I do warn you what you find ahead may not be what you wish to see. But if you step across this boundary you may not return. If you go back death is also certain.",
+      "speaker": "Monster",
+      "body": "A choice of the heart not of the mind. You have chosen the right answer and may pass. ut what you find will break you. To go forward is to accept a terrible truth. To go back is to accept the death you refused.",
       "theme": "nice-ending",
       "choices": [
       {
@@ -291,9 +291,9 @@
     },
     {
       "id": "not_nice",
-      "title": "Ending",
-      "speaker": "Alien",
-      "body": "You have chosen wrong — die.",
+      "title": "Morality",
+      "speaker": "Monster",
+      "body": "You traded a soul for a soul. An unworthy choice. The punishment is death. ",
       "theme": "bad_ending",
       "ending": true
     },
@@ -301,7 +301,7 @@
       "id": "finalEnding",
       "title": "Ending",
       "speaker": "NARRATOR",
-      "body": "You walk forward and there are ruins all around and it smells of metal..you start to see a trail of blood and freeze as if it could only be of one person.A red oxygen mask on the ground..like the one your partner had… and there is blood sprayed across the mask as it is shattered against the cold barren rock.",
+      "body": "You find ancient ruins. There on the jagged rocks lies an oxygen mask. Blood paints the stone surrouding the broken mask. ",
       "theme": "final_ending",
       "choices": [
       {
@@ -315,7 +315,7 @@
       "id": "lastpage",
       "title": "THE END",
       "speaker": "The team",
-      "body": "Thank you for playing our game. Srinjana, Raga, Mika.",
+      "body": "Thank you for playing our game.",
       "theme": "finaLending",
       "ending": true
     }
