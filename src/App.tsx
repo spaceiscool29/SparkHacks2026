@@ -127,7 +127,7 @@ function App() {
           {scene.speaker && <h2 className="scene-speaker">{scene.speaker}</h2>}
 
           {/* typewriter text replaces plain <p>{scene.body}</p> */}
-          <TypewriterText text={scene.body ?? ""} speed={20} className="story-body" />
+          <TypewriterText text={scene.body ?? ""} speed={50} className="story-body" />
 
           {!scene.ending && scene.choices?.length ? (
             <div className="choices">
