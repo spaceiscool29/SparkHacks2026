@@ -4,28 +4,14 @@
   "scenes": [
     {
       "id": "intro_impact",
-      "title": "Marzanna Hunt",
-      "speaker": "Choose an option:",
-      "body": "They are watching what you choose.",
-      "theme": "planet_entry",
-      "choices": [
-        {
-          "id": "b33",
-          "text": "START THE GAME",
-          "nextId": "theImpact"
-        }
-      ]
-    },
-    {
-      "id": "theImpact",
       "title": "Impact",
-      "speaker": "System ",
-      "body": "Asteroid shower incoming. Hull breach imminent. Navigation offline. Your partner's hand finds your in the dark.",
+      "speaker": "SYSTEM",
+      "body": "Asteroid shower incoming. Hull breach imminent. Navigation offline. In the dark, your partner finds your hand.",
       "theme": "crash_base",
       "choices": [
         {
           "id": "c1",
-          "text": "Seal cockpit bulkhead and attempt emergency landing. Leave it to fate.",
+          "text": "Seal the cockpit bulkhead and attempt an emergency landing. Leave the rest to fate.",
           "nextId": "path_bulkhead"
         },
         {
@@ -35,7 +21,7 @@
         },
         {
           "id": "c3",
-          "text": "Transmit final message. Hold course",
+          "text": "Transmit a final message and hold course.",
           "nextId": "path_transmit_crash"
         }
       ]
@@ -44,7 +30,7 @@
       "id": "path_bulkhead",
       "title": "Emergency Descent",
       "speaker": "NARRATOR",
-      "body": "You seal the cockpit but power surges, control fails. The planet rushes up. You and your partner lock oxygen masks and brace for impact as the world goes dark.",
+      "body": "You seal the cockpit, but power surges and control starts to fail. The planet rises fast beneath you. You and your partner lock your oxygen masks and brace as the world goes black.",
       "theme": "planet_entry",
       "choices": [
         {
@@ -58,7 +44,7 @@
       "id": "path_divert_death",
       "title": "System Collapse",
       "speaker": "NARRATOR",
-      "body": "You divert power, but the grid overloads. The ship enters uncontrolled freefall. Structural failure becomes total. You do not survive.",
+      "body": "You divert power, but the grid overloads. The ship drops into uncontrolled freefall. The frame tears apart. You do not survive.",
       "theme": "void_death",
       "ending": true
     },
@@ -66,7 +52,7 @@
       "id": "path_transmit_crash",
       "title": "Last Broadcast",
       "speaker": "PLAYER 1",
-      "body": "\"Mayday. Ship… lost. Crashing. We hold course.\"  You squeeze their hand. Static. Then nothing.",
+      "body": "\"Mayday. Ship compromised. We are going down. Holding course.\" You squeeze their hand. Static answers. Then silence.",
       "theme": "blackout_entry",
       "choices": [
         {
@@ -80,17 +66,17 @@
       "id": "wake_alone",
       "title": "Wreckage",
       "speaker": "NARRATOR",
-      "body": "Cold metal. Wind. A single, blinking oxygen canister. The other seat is empty, harness shredded.",
+      "body": "Cold metal. Bitter wind. A single oxygen canister blinks in the dark. The other seat is empty, harness torn open.",
       "theme": "wakeup",
       "choices": [
         {
           "id": "c4",
-          "text": "Follow the distress beacon into the canyon",
+          "text": "Follow the distress beacon into the canyon.",
           "nextId": "end_good"
         },
         {
           "id": "c5",
-          "text": "Stay near the ship and conserve oxygen. Wait for rescue",
+          "text": "Stay near the ship, conserve oxygen, and wait for rescue.",
           "nextId": "end_bad"
         }
       ]
@@ -99,21 +85,21 @@
       "id": "end_good",
       "title": "Signal Found",
       "speaker": "NARRATOR",
-      "body": "The beacon's steady glow is a heartbeat in the void. They're alive. They're waiting.",
+      "body": "The beacon pulses through the storm like a heartbeat. They are alive. They are waiting.",
       "theme": "endingSafe",
       "choices": [
-      {
-        "id": "next",
-        "text": "Continue",
-        "nextId": "voyage"
-      }
-    ]
+        {
+          "id": "next",
+          "text": "Continue",
+          "nextId": "voyage"
+        }
+      ]
     },
     {
       "id": "end_bad",
       "title": "Containment Failure",
       "speaker": "NARRATOR",
-      "body": "You wait too long in the wreckage. Oxygen runs out. Your vision goes dark and the silence is complete and everlasting.",
+      "body": "You wait too long in the wreckage. Oxygen runs out. Your vision narrows, then disappears. The silence is total.",
       "theme": "endingRisk",
       "ending": true
     },
@@ -121,16 +107,16 @@
       "id": "voyage",
       "title": "Voyage",
       "speaker": "NARRATOR",
-      "body": "A shadow peels from the canyon wall. It is tall, terrible, and its eyes are pits of cold judgment.",
+      "body": "A shadow peels itself from the canyon wall. It is tall, unnatural, and watching you with the patience of something ancient.",
       "choices": [
         {
           "id": "c15",
-          "text": "Run Away.",
+          "text": "Run away.",
           "nextId": "toBeStopped"
         },
         {
           "id": "c16",
-          "text": "Stay Strong",
+          "text": "Stand your ground.",
           "nextId": "stayStrong"
         }
       ]
@@ -139,56 +125,56 @@
       "id": "toBeStopped",
       "title": "Voyage",
       "speaker": "NARRATOR",
-      "body": "You feel that your body is not moving, as if something *or someone* is holding you in place.",
+      "body": "Your legs lock. Your body will not obey you, as if something, or someone, is holding you in place.",
       "choices": [
-      {
-        "id": "next",
-        "text": "Continue",
-        "nextId": "runAway"
-      }
+        {
+          "id": "next",
+          "text": "Continue",
+          "nextId": "runAway"
+        }
       ]
     },
     {
       "id": "runAway",
       "title": "Voyage",
-      "speaker": "Monster",
-      "body": "You, humans, are worthless creatures, Prove your soul has weight.",
+      "speaker": "MONSTER",
+      "body": "Humans. Fragile and loud. Prove your soul has weight.",
       "choices": [
-      {
-        "id": "next",
-        "text": "Continue",
-        "nextId": "alienQA"
-      }
+        {
+          "id": "next",
+          "text": "Continue",
+          "nextId": "alienQA"
+        }
       ]
     },
     {
       "id": "stayStrong",
       "title": "Morality",
-      "speaker": "Monster",
-      "body": "'You do not run. Curious. The other did. Answer. Your worth hangs in the balance.'",
+      "speaker": "MONSTER",
+      "body": "You did not run. Interesting. The other one did. Answer carefully. Your worth hangs in the balance.",
       "choices": [
-      {
-        "id": "next",
-        "text": "Continue",
-        "nextId": "alienQA"
-      }
+        {
+          "id": "next",
+          "text": "Continue",
+          "nextId": "alienQA"
+        }
       ]
     },
     {
       "id": "alienQA",
       "title": "Morality",
-      "speaker": "Monster",
-      "body": "Someone you love deeply holds a belief you find abhorrent. To truly save them from it, would you:",
+      "speaker": "MONSTER",
+      "body": "Someone you love deeply believes something you know is dangerous and wrong. To truly pull them out of it, would you:",
       "theme": "First question",
       "choices": [
         {
           "id": "c6",
-          "text": "Break their heart, turn them against you, and force upon them a painful truth.",
+          "text": "Break their heart, make them hate you, and force them to face a painful truth.",
           "nextId": "second_q"
         },
         {
           "id": "c7",
-          "text": "You allow them to remain happily wrong.",
+          "text": "Let them stay happily wrong, because the truth would destroy them.",
           "nextId": "interes"
         }
       ]
@@ -196,21 +182,21 @@
     {
       "id": "interes",
       "title": "Morality",
-      "speaker": "Monster",
-      "body": "An intriguing choice.",
+      "speaker": "MONSTER",
+      "body": "An interesting choice.",
       "choices": [
-      {
-        "id": "next",
-        "text": "Continue",
-        "nextId": "second_q"
-      }
+        {
+          "id": "next",
+          "text": "Continue",
+          "nextId": "second_q"
+        }
       ]
     },
     {
       "id": "second_q",
       "title": "Morality",
-      "speaker": "Monster",
-      "body": "Your partner is closer to the beacon. If you sabotage them, your claim is secure. They would never know it was you. Is your professional camaraderie stronger than your desire to succeed?",
+      "speaker": "MONSTER",
+      "body": "Your partner is closer to the beacon. If you sabotage them, your claim is secure. They would never know it was you. Is your loyalty stronger than your need to win?",
       "theme": "Second question",
       "choices": [
         {
@@ -228,21 +214,21 @@
     {
       "id": "choice",
       "title": "Morality",
-      "speaker": "Monster",
-      "body": "Interesting decision",
+      "speaker": "MONSTER",
+      "body": "Interesting decision.",
       "choices": [
-      {
-        "id": "next",
-        "text": "Continue",
-        "nextId": "third_q"
-      }
+        {
+          "id": "next",
+          "text": "Continue",
+          "nextId": "third_q"
+        }
       ]
     },
     {
       "id": "third_q",
       "title": "Morality",
-      "speaker": "Monster",
-      "body": "I watched your partner enter my domain. They spoke of you. They believed you would hesitate in the final moment, that your moral squeamishness made you weak. Does this change your desire to find them?",
+      "speaker": "MONSTER",
+      "body": "I watched your partner enter my domain. They spoke of you. They said you would hesitate when it mattered most, that your conscience makes you weak. Does that change your desire to find them?",
       "theme": "Third question",
       "choices": [
         {
@@ -260,31 +246,31 @@
     {
       "id": "pec",
       "title": "Morality",
-      "speaker": "Monster",
+      "speaker": "MONSTER",
       "body": "How peculiar.",
       "choices": [
-      {
-        "id": "next",
-        "text": "Continue",
-        "nextId": "fourth_q"
-      }
+        {
+          "id": "next",
+          "text": "Continue",
+          "nextId": "fourth_q"
+        }
       ]
     },
     {
       "id": "fourth_q",
       "title": "Morality",
-      "speaker": "Monster",
-      "body": "I will let you go further but your partner will die. Will you accept?",
+      "speaker": "MONSTER",
+      "body": "I can let you pass. But your partner will die. Will you accept that price?",
       "theme": "Fourth question",
       "choices": [
         {
           "id": "c12",
-          "text": "No. Even if they think I am weak. I refuse to let them die. Even if it is at the cost of my own life, it is a choice that I make.",
+          "text": "No. Even if they think I am weak, I refuse to let them die. Even if it costs my life, this is the choice I can live with.",
           "nextId": "nice"
         },
         {
           "id": "c13",
-          "text": "Yes. I'm tired of losing. Maybe this is how I win.",
+          "text": "Yes. I am tired of losing. Maybe this is what winning looks like.",
           "nextId": "not_nice"
         }
       ]
@@ -292,22 +278,22 @@
     {
       "id": "nice",
       "title": "Ending",
-      "speaker": "Monster",
-      "body": "A choice of the heart not of the mind. You have chosen the right answer and may pass. ut what you find will break you. To go forward is to accept a terrible truth. To go back is to accept the death you refused.",
+      "speaker": "MONSTER",
+      "body": "A choice of the heart, not the mind. You may pass. But what waits ahead will break you. Go forward and face a terrible truth, or turn back and accept the death you refused.",
       "theme": "nice-ending",
       "choices": [
-      {
-        "id": "next",
-        "text": "Go forward",
-        "nextId": "finalEnding"
-      }
+        {
+          "id": "next",
+          "text": "Go forward",
+          "nextId": "finalEnding"
+        }
       ]
     },
     {
       "id": "not_nice",
       "title": "Morality",
-      "speaker": "Monster",
-      "body": "You traded a soul for a soul. An unworthy choice. The punishment is death. ",
+      "speaker": "MONSTER",
+      "body": "You traded one soul for another. Unworthy. Your punishment is death.",
       "theme": "bad_ending",
       "ending": true
     },
@@ -315,22 +301,22 @@
       "id": "finalEnding",
       "title": "Ending",
       "speaker": "NARRATOR",
-      "body": "You find ancient ruins. There on the jagged rocks lies an oxygen mask. Blood paints the stone surrouding the broken mask. ",
+      "body": "You find ancient ruins. On the jagged stone lies an oxygen mask. Blood darkens the rock around it.",
       "theme": "final_ending",
       "choices": [
-      {
-        "id": "next",
-        "text": "Continue",
-        "nextId": "lastpage"
-      }
+        {
+          "id": "next",
+          "text": "Continue",
+          "nextId": "lastpage"
+        }
       ]
     },
     {
       "id": "lastpage",
       "title": "THE END",
-      "speaker": "The team",
+      "speaker": "The Team",
       "body": "Thank you for playing our game.",
-      "theme": "finaLending",
+      "theme": "finalEnding",
       "ending": true
     }
   ]
