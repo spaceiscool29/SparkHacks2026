@@ -87,7 +87,13 @@
       "speaker": "SYSTEM",
       "body": "You find signs your partner survived. A faint beacon pulses in the storm. Hope returns.",
       "theme": "endingSafe",
-      "ending": true
+      "choices": [
+      {
+        "id": "next",
+        "text": "Continue",
+        "nextId": "alienQA"
+      }
+    ]
     },
     {
       "id": "end_bad",
@@ -95,6 +101,97 @@
       "speaker": "SYSTEM",
       "body": "You wait too long in the wreckage. Oxygen runs out. The planet goes dark.",
       "theme": "endingRisk",
+      "ending": true
+    },
+    {
+      "id": "alienQA",
+      "title": "Scene 3: Alien",
+      "speaker": "ALIEN",
+      "body": "Someone you love deeply holds a belief you find abhorrent. To truly save them from it, would you:",
+      "theme": "First question",
+      "choices": [
+        {
+          "id": "c6",
+          "text": "Break their heart, turn them against you, and force upon them a painful truth.",
+          "nextId": "second_q"
+        },
+        {
+          "id": "c7",
+          "text": "You allow them to remain happily wrong.",
+          "nextId": "second_q"
+        }
+      ]
+    },
+    {
+      "id": "second_q",
+      "title": "Scene 3: Alien",
+      "speaker": "ALIEN",
+      "body": "Your partner is closer to it. If you sabotage them, your claim is secure. They would never know it was you. Is your professional camaraderie stronger than your desire to succeed?",
+      "theme": "Second question",
+      "choices": [
+        {
+          "id": "c8",
+          "text": "Yes, it is.",
+          "nextId": "third_q"
+        },
+        {
+          "id": "c9",
+          "text": "No, it is not.",
+          "nextId": "third_q"
+        }
+      ]
+    },
+    {
+      "id": "third_q",
+      "title": "Scene 3: Alien",
+      "speaker": "ALIEN",
+      "body": "I watched your coworker enter my domain. They spoke of you. They believed you would hesitate in the final moment, that your moral squeamishness made you weak. Does this change your desire to find them?",
+      "theme": "Third question",
+      "choices": [
+        {
+          "id": "c10",
+          "text": "Yes, it does.",
+          "nextId": "fourth_q"
+        },
+        {
+          "id": "c11",
+          "text": "No, it does not.",
+          "nextId": "fourth_q"
+        }
+      ]
+    },
+    {
+      "id": "fourth_q",
+      "title": "Scene 3: Alien",
+      "speaker": "ALIEN",
+      "body": "I will let you go further and find the gem but your working partner will die the moment you see it. Will you accept?",
+      "theme": "Fourth question",
+      "choices": [
+        {
+          "id": "c12",
+          "text": "No. Even if they think I am weak. I refuse to let them die. I care about them too much and my herat is too soft to eveb think of a momnet where i willingly let harm come to them. Even if it is at the cost of my own life, it is a choice that I make.",
+          "nextId": "nice"
+        },
+        {
+          "id": "c13",
+          "text": "Yes….Its unfortunate…and i think I will regret this decision for the rest of my life..but I cant do this anymore..the fighting,..the pain..the choices that i hae had to make..maybe there is a change where i can succeed..and isnt that what they would want for me?",
+          "nextId": "not_nice"
+        }
+      ]
+    },
+    {
+      "id": "nice",
+      "title": "Ending",
+      "speaker": "Alien",
+      "body": "...a hard choice..and yet one that you made for the sake of your partner.. For a chance forr them to be happy. You have chosen the right answer it was a hard choice..and yet it was also the one made from your heart and not from ill intentions. This proves that you are of pure heart. You may go forth. I do warn you what you find ahead may not be what you wish to see. But if you step across this boundary you may not return. If you go back death is also certain.",
+      "theme": "nice-ending"
+    },
+    {
+      "id": "not_nice",
+      "title": "Ending",
+      "speaker": "Alien",
+      "body": "You have chosen wrong — die.",
+      "theme": "bad_ending",
       "ending": true
     }
   ]
